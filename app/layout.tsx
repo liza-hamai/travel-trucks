@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import "./globals.css";
+import Header from "@/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <TanStackProvider>{children}</TanStackProvider>
+      <TanStackProvider>
+        <Header />
+        {children}
+      </TanStackProvider>
       </body>
     </html>
   );

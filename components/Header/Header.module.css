@@ -1,0 +1,50 @@
+.header {
+    background-color: var(--inputs);
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding-block: 28px;
+}
+
+.logo {
+    justify-self: start;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 16px;
+}
+
+.logo span {
+    color: var(--text);
+}
+
+.logo:hover {
+    color: var(--green-hover);
+}
+
+.logo:hover span {
+    color: var(--grey-green);
+}
+
+.list {
+    display: flex;
+    gap: 32px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.list a {
+    color: var(--main);
+    transition: color var(--main-transition);
+}
+
+.list a:hover {
+    color: var(--green-hover);
+}
+
+.list a.active {
+    color: var(--grey-green);
+}
