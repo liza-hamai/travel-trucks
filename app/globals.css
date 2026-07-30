@@ -3,7 +3,7 @@
   --text: #475467;
   --white: #fff;
   --inputs: #f7f7f7;
-  --badges: #f2f4f7;
+  --badges: #eaecef;
   --gray: #6c717b;
   --gray-light: #dadde1;
   --button: #e44848;
@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
