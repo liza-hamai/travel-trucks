@@ -12,7 +12,7 @@ import { IoCar } from "react-icons/io5";
 
 const formLabels: Record<string, string> = {
   alcove: "Alcove",
-  panelTruck: "Panel Truck",
+  panel_van: "Panel Van",
   integrated: "Fully Integrated",
   semi_integrated: "Semi Integrated",
 };

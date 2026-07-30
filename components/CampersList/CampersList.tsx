@@ -2,10 +2,15 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCampers } from "@/lib/api";
+import type { CamperFilters } from "@/types/camper";
 import CamperCard from "@/components/CamperCard/CamperCard";
 import css from "./CampersList.module.css";
 
-export default function CampersList() {
+interface CampersListProps {
+  filters: CamperFilters;
+}
+
+export default function CampersList({ filters }: CampersListProps) {
   const {
     data,
     fetchNextPage,
@@ -14,8 +19,8 @@ export default function CampersList() {
     isPending,
     isError,
   } = useInfiniteQuery({
-    queryKey: ["campers"],
-    queryFn: ({ pageParam }) => getCampers(pageParam),
+    queryKey: ["campers", filters],
+    queryFn: ({ pageParam }) => getCampers(pageParam, filters),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const nextPage = lastPage.page + 1;
@@ -31,8 +36,11 @@ export default function CampersList() {
     return <p>Something went wrong. Please try again.</p>;
   }
 
-  // Збираємо кемперів з усіх завантажених сторінок в один масив
   const campers = data.pages.flatMap((page) => page.campers);
+
+  if (campers.length === 0) {
+    return <p>No campers found. Try changing the filters.</p>;
+  }
 
   return (
     <div>
