@@ -26,11 +26,11 @@ export default function CamperCard({ camper }: CamperCardProps) {
     <li className={css.card}>
       <div className={css.imageWrapper}>
         <Image
-          src={camper.coverImage}
-          alt={camper.name}
-          fill
-          sizes="292px"
-          className={css.image}
+        src={camper.coverImage ?? "/placeholder.jpg"}
+        alt={camper.name}
+        fill
+        sizes="292px"
+        className={css.image}
         />
       </div>
 
@@ -43,7 +43,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
         <div className={css.meta}>
             <span className={css.span}>
                 <BsFillStarFill size={16} className={css.star} />
-                {camper.rating} ({camper.totalReviews} Reviews)
+                {camper.rating}({camper.totalReviews} Reviews)
             </span>
             <span className={css.span}>
                 <BsMap size={16} />

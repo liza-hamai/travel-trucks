@@ -1,5 +1,10 @@
 import axios from "axios";
-import type { CampersResponse, CamperFilters } from "@/types/camper";
+import type {
+  Camper,
+  CampersResponse,
+  CamperFilters,
+  CamperReview,
+} from "@/types/camper";
 
 export const api = axios.create({
   baseURL: "https://campers-api.goit.study",
@@ -22,5 +27,15 @@ export async function getCampers(
   if (filters.transmission) params.transmission = filters.transmission;
 
   const { data } = await api.get<CampersResponse>("/campers", { params });
+  return data;
+}
+
+export async function getCamperById(id: string): Promise<Camper> {
+  const { data } = await api.get<Camper>(`/campers/${id}`);
+  return data;
+}
+
+export async function getCamperReviews(id: string): Promise<CamperReview[]> {
+  const { data } = await api.get<CamperReview[]>(`/campers/${id}/reviews`);
   return data;
 }

@@ -1,0 +1,47 @@
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.main {
+    position: relative;
+    width: 638px;
+    height: 505px;
+    border-radius: 17px;
+    overflow: hidden;
+    background-color: var(--inputs);
+}
+
+.mainImage {
+    object-fit: cover;
+}
+
+.thumbs {
+    display: flex;
+    gap: 32px;
+}
+
+.thumb {
+    position: relative;
+    width: 136px;
+    height: 144px;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 0;
+    background-color: var(--inputs);
+    transition: border-color var(--main-transition);
+}
+
+.thumb:not(.active):hover {
+    border-color: var(--gray-light);
+}
+
+.active {
+    border-color: var(--grey-green);
+}
+
+.thumbImage {
+    object-fit: cover;
+}
