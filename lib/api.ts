@@ -4,6 +4,7 @@ import type {
   CampersResponse,
   CamperFilters,
   CamperReview,
+  BookingRequest,
 } from "@/types/camper";
 
 export const api = axios.create({
@@ -38,4 +39,11 @@ export async function getCamperById(id: string): Promise<Camper> {
 export async function getCamperReviews(id: string): Promise<CamperReview[]> {
   const { data } = await api.get<CamperReview[]>(`/campers/${id}/reviews`);
   return data;
+}
+
+export async function bookCamper(
+  id: string,
+  payload: BookingRequest
+): Promise<void> {
+  await api.post(`/campers/${id}/booking-requests`, payload);
 }

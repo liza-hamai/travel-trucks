@@ -127,7 +127,7 @@ export default function CamperDetailsPage() {
             </div>
 
             <div className={css.formCol}>
-            <BookingForm />
+            <BookingForm camperId={camper.id} />
             </div>
         </div>
       </div>

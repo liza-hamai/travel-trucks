@@ -54,3 +54,8 @@ export interface CamperFilters {
   engine?: CamperEngine;
   transmission?: CamperTransmission;
 }
+
+export interface BookingRequest {
+  name: string;
+  email: string;
+}

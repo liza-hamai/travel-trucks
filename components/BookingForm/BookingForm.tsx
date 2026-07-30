@@ -5,11 +5,16 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { BsExclamationCircle } from "react-icons/bs";
 import { useDebounce } from "use-debounce";
+import { bookCamper } from "@/lib/api";
 import css from "./BookingForm.module.css";
 
 interface BookingValues {
   name: string;
   email: string;
+}
+
+interface BookingFormProps {
+  camperId: string;
 }
 
 const initialValues: BookingValues = {
@@ -62,7 +67,7 @@ function FieldWithError({ name, type = "text", placeholder }: FieldWithErrorProp
   );
 }
 
-export default function BookingForm() {
+export default function BookingForm({ camperId }: BookingFormProps) {
   return (
     <div className={css.wrapper}>
       <h2 className={css.title}>Book your campervan now</h2>
@@ -73,10 +78,14 @@ export default function BookingForm() {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, { resetForm }) => {
-          console.log("Booking submitted:", values);
-          toast.success("Booking successful! We will contact you soon.");
-          resetForm();
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            await bookCamper(camperId, values);
+            toast.success("Booking successful! We will contact you soon.");
+            resetForm();
+          } catch {
+            toast.error("Something went wrong. Please try again.");
+          }
         }}
       >
         <Form className={css.form}>
