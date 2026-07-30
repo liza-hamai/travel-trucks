@@ -115,6 +115,13 @@
     justify-content: space-between;
 }
 
+.bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+}
+
 .reviewsTitle {
     font-weight: 600;
     font-size: 24px;

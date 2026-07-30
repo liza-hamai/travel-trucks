@@ -1,0 +1,112 @@
+.wrapper {
+    border: 1px solid var(--gray-light);
+    border-radius: 16px;
+    padding: 44px 57px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    color: var(--main);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field:first-child {
+    margin-bottom: 14px;
+}
+
+.label {
+    display: inline-block;
+    align-self: flex-start;
+    margin-left: 16px;
+    margin-bottom: -4px;
+    padding: 0 8px;
+    background-color: var(--error-background);
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+    font-size: 14px;
+    color: var(--button);
+}
+
+.input {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid var(--inputs);
+    border-radius: 12px;
+    background-color: var(--inputs);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--gray);
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--button);
+    pointer-events: none;
+}
+
+.inputError {
+    border-color: var(--button);
+    background-color: var(--error-background);
+    color: var(--main);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.error {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--button);
+}
+
+.button {
+    align-self: center;
+    margin-top: 24px;
+    padding: 16px 0;
+    border-radius: 200px;
+    background-color: var(--grey-green);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    width: 100%;
+    transition: background-color var(--main-transition);
+}
+
+.button:hover {
+    background-color: var(--green-hover);
+}
+

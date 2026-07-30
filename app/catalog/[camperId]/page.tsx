@@ -6,6 +6,7 @@ import { getCamperById } from "@/lib/api";
 import Loader from "@/components/Loader/Loader";
 import Gallery from "@/components/Gallery/Gallery";
 import Reviews from "@/components/Reviews/Reviews";
+import BookingForm from "@/components/BookingForm/BookingForm";
 import { BsFillStarFill, BsMap } from "react-icons/bs";
 import css from "./page.module.css";
 
@@ -117,14 +118,17 @@ export default function CamperDetailsPage() {
         </div>
       </div>
 
-      <div className={css.bottom}>
-        <div className={css.reviewsCol}>
-          <h2 className={css.reviewsTitle}>Reviews</h2>
-          <Reviews camperId={camper.id} />
-        </div>
+      <div className={css.bottomSection}>
+        <h2 className={css.reviewsTitle}>Reviews</h2>
 
-        <div className={css.formCol}>
+        <div className={css.bottom}>
+            <div className={css.reviewsCol}>
+            <Reviews camperId={camper.id} />
+            </div>
 
+            <div className={css.formCol}>
+            <BookingForm />
+            </div>
         </div>
       </div>
     </section>
