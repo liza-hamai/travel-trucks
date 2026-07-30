@@ -1,0 +1,48 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.item {
+    background-color: var(--inputs);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--white);
+    color: var(--grey-green);
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 133%;
+    flex-shrink: 0;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--main);
+    margin-bottom: 4px;
+}
+
+.comment {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text);
+}

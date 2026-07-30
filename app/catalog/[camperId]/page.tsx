@@ -2,10 +2,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
-import Image from "next/image";
 import { getCamperById } from "@/lib/api";
 import Loader from "@/components/Loader/Loader";
 import Gallery from "@/components/Gallery/Gallery";
+import Reviews from "@/components/Reviews/Reviews";
 import { BsFillStarFill, BsMap } from "react-icons/bs";
 import css from "./page.module.css";
 
@@ -52,7 +52,6 @@ export default function CamperDetailsPage() {
   return (
     <section className={`container ${css.page}`}>
       <div className={css.grid}>
-        
         <div className={css.left}>
           {camper.gallery && camper.gallery.length > 0 && (
             <Gallery images={camper.gallery} alt={camper.name} />
@@ -60,7 +59,6 @@ export default function CamperDetailsPage() {
         </div>
 
         <div className={css.right}>
-
           <div className={css.card}>
             <h1 className={css.name}>{camper.name}</h1>
             <div className={css.meta}>
@@ -76,7 +74,7 @@ export default function CamperDetailsPage() {
             <p className={css.price}>€{camper.price.toFixed(2)}</p>
             <p className={css.description}>{camper.description}</p>
           </div>
-                  
+
           <div className={css.card}>
             <h2 className={css.detailsTitle}>Vehicle details</h2>
             <ul className={css.badges}>
@@ -116,6 +114,17 @@ export default function CamperDetailsPage() {
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+
+      <div className={css.bottom}>
+        <div className={css.reviewsCol}>
+          <h2 className={css.reviewsTitle}>Reviews</h2>
+          <Reviews camperId={camper.id} />
+        </div>
+
+        <div className={css.formCol}>
+
         </div>
       </div>
     </section>
