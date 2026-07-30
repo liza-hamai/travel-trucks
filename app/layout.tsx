@@ -7,7 +7,10 @@ import Header from "@/components/Header/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "TravelTrucks",
+  title: {
+    default: "TravelTrucks",
+    template: "%s | TravelTrucks",
+  },
   description: "Rent the camper of your dreams for your next road trip.",
 };
 
@@ -19,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <TanStackProvider>
-        <Header />
-        {children}
-      </TanStackProvider>
+        <TanStackProvider>
+          <Header />
+          {children}
+        </TanStackProvider>
       </body>
     </html>
   );
