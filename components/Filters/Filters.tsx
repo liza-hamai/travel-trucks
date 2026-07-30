@@ -30,6 +30,10 @@ export default function Filters({ onApply }: FiltersProps) {
   const [engine, setEngine] = useState<CamperEngine | "">("");
   const [transmission, setTransmission] = useState<CamperTransmission | "">("");
 
+  const toggle = <T,>(current: T | "", value: T, setter: (v: T | "") => void) => {
+    setter(current === value ? "" : value);
+  };
+
   const handleSearch = () => {
     onApply({
       location: location.trim() || undefined,
@@ -37,6 +41,11 @@ export default function Filters({ onApply }: FiltersProps) {
       engine: engine || undefined,
       transmission: transmission || undefined,
     });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSearch();
   };
 
   const handleClear = () => {
@@ -49,88 +58,93 @@ export default function Filters({ onApply }: FiltersProps) {
 
   return (
     <aside className={css.sidebar}>
+      <form onSubmit={handleSubmit}>
         <div className={css.field}>
-        <p className={css.label}>Location</p>
-        <div className={css.inputWrapper}>
+          <p className={css.label}>Location</p>
+          <div className={css.inputWrapper}>
             <BsMap size={20} className={css.inputIcon} />
             <input
-            type="text"
-            className={css.input}
-            placeholder="City"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+              type="text"
+              className={css.input}
+              placeholder="City"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
             />
-        </div>
+          </div>
         </div>
 
         <h2 className={css.title}>Filters</h2>
 
         <div className={css.group}>
-        <p className={css.groupTitle}>Camper form</p>
-        <ul className={css.options}>
+          <p className={css.groupTitle}>Camper form</p>
+          <ul className={css.options}>
             {formOptions.map((option) => (
-            <li key={option.value}>
+              <li key={option.value}>
                 <label className={css.option}>
-                <input
+                  <input
                     type="radio"
                     name="form"
                     checked={form === option.value}
-                    onChange={() => setForm(option.value)}
-                />
-                {option.label}
+                    onChange={() => {}}
+                    onClick={() => toggle(form, option.value, setForm)}
+                  />
+                  {option.label}
                 </label>
-            </li>
+              </li>
             ))}
-        </ul>
+          </ul>
         </div>
 
         <div className={css.group}>
-        <p className={css.groupTitle}>Engine</p>
-        <ul className={css.options}>
+          <p className={css.groupTitle}>Engine</p>
+          <ul className={css.options}>
             {engineOptions.map((value) => (
-            <li key={value}>
+              <li key={value}>
                 <label className={css.option}>
-                <input
+                  <input
                     type="radio"
                     name="engine"
                     checked={engine === value}
-                    onChange={() => setEngine(value)}
-                />
-                {value}
+                    onChange={() => {}}
+                    onClick={() => toggle(engine, value, setEngine)}
+                  />
+                  {value}
                 </label>
-            </li>
+              </li>
             ))}
-        </ul>
+          </ul>
         </div>
 
         <div className={css.group}>
-        <p className={css.groupTitle}>Transmission</p>
-        <ul className={css.options}>
+          <p className={css.groupTitle}>Transmission</p>
+          <ul className={css.options}>
             {transmissionOptions.map((value) => (
-            <li key={value}>
+              <li key={value}>
                 <label className={css.option}>
-                <input
+                  <input
                     type="radio"
                     name="transmission"
                     checked={transmission === value}
-                    onChange={() => setTransmission(value)}
-                />
-                {value}
+                    onChange={() => {}}
+                    onClick={() => toggle(transmission, value, setTransmission)}
+                  />
+                  {value}
                 </label>
-            </li>
+              </li>
             ))}
-        </ul>
+          </ul>
         </div>
 
         <div className={css.actions}>
-        <button type="button" className={css.search} onClick={handleSearch}>
+          <button type="submit" className={css.search}>
             Search
-        </button>
-        <button type="button" className={css.clear} onClick={handleClear}>
+          </button>
+          <button type="button" className={css.clear} onClick={handleClear}>
             <BsX size={24} />
             Clear filters
-        </button>
+          </button>
         </div>
+      </form>
     </aside>
-    );
+  );
 }

@@ -4,13 +4,16 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { getCampers } from "@/lib/api";
 import type { CamperFilters } from "@/types/camper";
 import CamperCard from "@/components/CamperCard/CamperCard";
+import Loader from "@/components/Loader/Loader";
+import EmptyState from "@/components/EmptyState/EmptyState";
 import css from "./CampersList.module.css";
 
 interface CampersListProps {
   filters: CamperFilters;
+  onClearFilters: () => void;
 }
 
-export default function CampersList({ filters }: CampersListProps) {
+export default function CampersList({ filters, onClearFilters }: CampersListProps) {
   const {
     data,
     fetchNextPage,
@@ -29,7 +32,7 @@ export default function CampersList({ filters }: CampersListProps) {
   });
 
   if (isPending) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (isError) {
@@ -39,7 +42,7 @@ export default function CampersList({ filters }: CampersListProps) {
   const campers = data.pages.flatMap((page) => page.campers);
 
   if (campers.length === 0) {
-    return <p>No campers found. Try changing the filters.</p>;
+    return <EmptyState onClear={onClearFilters} />;
   }
 
   return (

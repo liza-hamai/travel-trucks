@@ -13,7 +13,10 @@ export default function CatalogPage() {
     <section className="container">
       <div className={css.layout}>
         <Filters onApply={setFilters} />
-        <CampersList filters={filters} />
+        <CampersList
+        filters={filters}
+        onClearFilters={() => setFilters({})}
+        />
       </div>
     </section>
   );
